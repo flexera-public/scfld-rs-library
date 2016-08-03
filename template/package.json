@@ -34,7 +34,8 @@
     "rollup-plugin-commonjs": "^3.3.1",
     "rollup-plugin-node-resolve": "^1.7.2",
     "rollup-plugin-typescript": "^0.7.7",
-    "rollup-watch": "^2.5.0"
+    "rollup-watch": "^2.5.0",
+    "typescript": "^2.0.0"
   },
   "scripts": {
     "test": "gulp spec"

@@ -47,7 +47,8 @@ function compile(source, destination) {
         emitDecoratorMetadata: true,
         experimentalDecorators: true,
         noImplicitAny: true,
-        removeComments: true
+        removeComments: true,
+        typescript: require('typescript')
       }),
       babel({
         exclude: 'node_modules/**',
