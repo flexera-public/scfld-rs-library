@@ -206,3 +206,13 @@ gulp.task('spec', ['demo:build', 'spec:compile'], (cb) => {
       cb();
     }).start();
 });
+
+gulp.task('spec:debug', ['spec:compile'], (cb) => {
+  var path = require('path');
+  new karma.Server(
+    {
+      configFile: path.resolve('karma.conf.js'),
+      browsers: ['Chrome'],
+      singleRun: false
+    }).start();
+});
