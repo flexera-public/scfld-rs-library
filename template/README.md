@@ -66,7 +66,7 @@ rebuilt:
 
 ## Contributors
 
-* <%= author %> (@<%= user %>)
+* [<%= author %>](https://github.com/<%= user %>)
 
 ## License
 
