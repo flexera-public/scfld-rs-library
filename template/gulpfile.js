@@ -51,7 +51,7 @@ function compile(source, destination) {
         typescript: require('typescript')
       }),
       babel({
-        exclude: 'node_modules/**',
+        exclude: 'node_modules/**/*.js',
         presets: ["es2015-rollup"]
       }),
       commonjs({
