@@ -4,8 +4,7 @@ node_js:
 deploy:
   provider: npm
   email: christian.teijon+rightscaleci@rightscale.com
-  api_key:
-    secure: <key>
+  api_key: "$NPM_TOKEN"
   on:
     tags: true
     branch: master
