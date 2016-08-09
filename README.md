@@ -17,9 +17,9 @@ template can easily be adapted to anyone.
 
 ## How to use this?
 
-First you need to install Scfld and scfld-rs-library:
+First you need to install Scfld and @rightscale/scfld-rs-library:
 
-    npm i -g scfld scfld-rs-library
+    npm i -g scfld @rightscale/scfld-rs-library
 
 Then, create an empty folder and scaffold a project:
 

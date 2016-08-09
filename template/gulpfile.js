@@ -22,7 +22,7 @@ var config = require('./config.json');
 // set to true when the default task is running and we're watching
 // for file changes. This is used to prevent errors from failing the
 // build and exiting the process.
-var watching = process.argv.length == 2 || process.argv[2] == 'default';
+var watching = process.argv.length === 2 || process.argv[2] === 'default';
 
 // Config for htmlmin when processing templates
 var htmlMinOptions = {
@@ -52,8 +52,8 @@ function compile(source, destination) {
       }),
       babel({
         exclude: 'node_modules/**/*.js',
-        presets: [["es2015", { modules: false }]],
-        plugins: ["external-helpers"]
+        presets: [['es2015', { modules: false }]],
+        plugins: ['external-helpers']
       }),
       commonjs({
         include: 'node_modules/**'
@@ -202,14 +202,14 @@ gulp.task('spec', ['demo:build', 'spec:compile'], (cb) => {
     { configFile: path.resolve('karma.conf.js') },
     exitCode => {
       console.log('exit code', exitCode)
-      if (exitCode != 0) {
+      if (exitCode) {
         process.exit(1);
       }
       cb();
     }).start();
 });
 
-gulp.task('spec:debug', ['spec:compile'], (cb) => {
+gulp.task('spec:debug', ['demo:build', 'spec:compile'], () => {
   var path = require('path');
   new karma.Server(
     {
