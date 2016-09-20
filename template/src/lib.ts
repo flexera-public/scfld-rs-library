@@ -1,4 +1,4 @@
-import ngModule from '@rightscale/ui-angular-decorators'
+import Module from '@rightscale/ui-angular-decorators';
 
-var lib = new ngModule('<%= moduleName %>', [])
-export default lib
+let lib = new Module('<%= moduleName %>', []);
+export default lib;

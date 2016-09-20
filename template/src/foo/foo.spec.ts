@@ -1,17 +1,17 @@
-import {FooController} from './foo.component'
+import {Foo} from './foo.component';
 
-describe(FooController.name, () => {
+describe(Foo.name, () => {
 
-  var controller : FooController
+  let controller: Foo;
 
-  beforeEach(angular.mock.module('<%= moduleName %>'))
+  beforeEach(angular.mock.module('<%= moduleName %>'));
 
   beforeEach(inject(($controller: ng.IControllerService) => {
-    controller = <FooController>$controller(FooController.name)
-  }))
+    controller = <Foo>$controller(Foo.name);
+  }));
 
   it ('should have a message that talks about SVG', () => {
-    expect(controller.message).toContain('SVG')
-  })
+    expect(controller.message).toContain('SVG');
+  });
 
-})
+});

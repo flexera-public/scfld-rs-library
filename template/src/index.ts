@@ -1,1 +1,1 @@
-import './foo/foo.component'
+import './foo/foo.component';

@@ -11,12 +11,6 @@ var inject = require('gulp-inject');
 
 var karma = require('karma');
 
-var rollup = require('rollup');
-var babel = require('rollup-plugin-babel');
-var typescript = require('rollup-plugin-typescript');
-var commonjs = require('rollup-plugin-commonjs');
-var nodeResolve = require('rollup-plugin-node-resolve');
-
 var config = require('./config.json');
 
 // set to true when the default task is running and we're watching
@@ -37,6 +31,12 @@ var htmlMinOptions = {
 
 // Compiles and bundles TypeScript to JavaScript
 function compile(source, destination) {
+  var rollup = require('rollup');
+  var babel = require('rollup-plugin-babel');
+  var typescript = require('rollup-plugin-typescript');
+  var commonjs = require('rollup-plugin-commonjs');
+  var nodeResolve = require('rollup-plugin-node-resolve');
+
   return rollup.rollup({
     entry: source,
     plugins: [
@@ -68,7 +68,7 @@ function compile(source, destination) {
     ],
     sourceMap: true
   }).then(bundle => {
-    return bundle.write({ dest: destination });
+    return bundle.write({ dest: destination, sourceMap: true });
   })
 }
 
@@ -182,6 +182,19 @@ gulp.task('demo', ['demo:build'], () => {
  * Tasks to build and run the tests
  */
 
+gulp.task('lint', () => {
+  var tslint = require('gulp-tslint');
+
+  return gulp.src(['src/**/*.ts', 'demo/**/*.ts'])
+    .pipe(tslint({
+      formattersDirectory: 'node_modules/custom-tslint-formatters/formatters',
+      formatter: 'grouped'
+    }))
+    .pipe(tslint.report({
+      summarizeFailureOutput: true
+    }));
+});
+
 gulp.task('spec:inject', () => {
   return gulp.src('src/spec.ts')
     .pipe(inject(gulp.src('src/**/*.spec.ts'), {
@@ -196,7 +209,7 @@ gulp.task('spec:compile', ['spec:inject'], () => {
   return compile('.tmp/spec.ts', '.tmp/spec.js');
 })
 
-gulp.task('spec', ['demo:build', 'spec:compile'], (cb) => {
+gulp.task('spec', ['lint', 'demo:build', 'spec:compile'], (cb) => {
   var path = require('path');
   new karma.Server(
     { configFile: path.resolve('karma.conf.js') },
