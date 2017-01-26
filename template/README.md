@@ -42,11 +42,11 @@ That will automatically serve the demo app and watch for any changes to the app 
 
 You can run the tests in PhantomJS:
 
-    gulp spec
+    gulp <%=moduleName %>:spec
 
 Or you can run them in Chrome if you wish to debug them:
 
-    gulp spec:debug
+    gulp <%=moduleName %>:spec:chrome:debug
 
 ### Working with a dependent package
 
