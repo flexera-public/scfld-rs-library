@@ -1,8 +1,9 @@
 import 'angular/angular';
+
 import 'angular-ui-router/release/angular-ui-router';
 
 import './routes';
 
-import '../.tmp/build/images';
-import '../.tmp/build/templates';
+import '../build/demo.images';
+import '../build/demo.templates';
 import '../index';
